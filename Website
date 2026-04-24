@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aegis Safety Consultancy | Perth, Western Australia</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0c1a2e;
+    --navy-mid: #162640;
+    --navy-light: #1e3555;
+    --amber: #e8951a;
+    --amber-light: #f5a930;
+    --offwhite: #f4efe6;
+    --white: #ffffff;
+    --gray: #8a9ab5;
+    --gray-light: #c8d3e6;
+    --text-dark: #0c1a2e;
+    --text-body: #2c3e55;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Karla', sans-serif;
+    background: var(--offwhite);
+    color: var(--text-body);
+    overflow-x: hidden;
+  }
+
+  /* ---- NAV ---- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(12, 26, 46, 0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--amber);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 68px;
+  }
+  .nav-logo {
+    display: flex; align-items: center;
+  }
+  .nav-logo img { height: 44px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: var(--gray-light); text-decoration: none;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--amber); }
+  .nav-cta {
+    background: var(--amber); color: var(--navy);
+    padding: 9px 22px; border-radius: 4px;
+    font-weight: 700; font-size: 13px; letter-spacing: 0.5px;
+    text-decoration: none; text-transform: uppercase;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--amber-light); }
+
+  /* ---- HERO ---- */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 120px 48px 80px;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(232,149,26,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,149,26,0.07) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-glow {
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(232,149,26,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; max-width: 800px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,149,26,0.12); border: 1px solid rgba(232,149,26,0.3);
+    color: var(--amber); padding: 6px 14px; border-radius: 3px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--amber); border-radius: 50%; display: block; }
+  h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(52px, 7vw, 92px);
+    font-weight: 800; line-height: 0.95;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: -1px; margin-bottom: 24px;
+  }
+  h1 em { color: var(--amber); font-style: normal; }
+  .hero-sub {
+    font-family: 'Lora', serif; font-size: 18px; line-height: 1.7;
+    color: var(--gray-light); max-width: 560px; margin-bottom: 40px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--amber); color: var(--navy);
+    padding: 15px 32px; border-radius: 4px;
+    font-weight: 700; font-size: 14px; letter-spacing: 0.5px;
+    text-decoration: none; text-transform: uppercase;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--amber-light); transform: translateY(-1px); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.25); color: var(--white);
+    padding: 13px 32px; border-radius: 4px;
+    font-weight: 600; font-size: 14px; letter-spacing: 0.5px;
+    text-decoration: none; text-transform: uppercase;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--amber); color: var(--amber); }
+
+  /* ---- SECTION SHARED ---- */
+  section { padding: 96px 48px; }
+  .section-tag {
+    font-size: 11px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--amber); margin-bottom: 12px;
+  }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(36px, 5vw, 58px); font-weight: 800;
+    text-transform: uppercase; line-height: 1; letter-spacing: -0.5px;
+    margin-bottom: 20px;
+  }
+  .lead {
+    font-family: 'Lora', serif; font-size: 17px; line-height: 1.75;
+    color: #4a6080; max-width: 560px; margin-bottom: 56px;
+  }
+
+  /* ---- SERVICES ---- */
+  #services { background: var(--white); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2px;
+  }
+  .service-card {
+    background: var(--offwhite); padding: 36px 32px;
+    border-left: 4px solid transparent;
+    transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; bottom: 0; right: 0;
+    width: 80px; height: 80px;
+    background: rgba(232,149,26,0.06);
+    border-radius: 50% 0 0 0;
+    transition: all 0.3s;
+  }
+  .service-card:hover { background: var(--navy); border-left-color: var(--amber); }
+  .service-card:hover .service-icon { color: var(--amber); }
+  .service-card:hover .service-title { color: var(--white); }
+  .service-card:hover .service-desc { color: var(--gray); }
+  .service-icon { font-size: 28px; margin-bottom: 16px; }
+  .service-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; margin-bottom: 10px; color: var(--navy);
+    transition: color 0.25s;
+  }
+  .service-desc { font-size: 14px; line-height: 1.65; color: #5a7090; transition: color 0.25s; }
+
+  /* ---- REMOTE SUPPORT ---- */
+  #remote {
+    background: var(--navy);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  #remote h2, #remote .section-tag { color: var(--white); }
+  #remote h2 em { color: var(--amber); font-style: normal; }
+  #remote .lead { color: var(--gray); }
+  .remote-card {
+    background: var(--navy-light); border: 1px solid rgba(232,149,26,0.2);
+    border-radius: 8px; padding: 40px; position: relative; overflow: hidden;
+  }
+  .remote-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--amber), var(--amber-light));
+  }
+  .remote-features { list-style: none; margin-bottom: 32px; }
+  .remote-features li {
+    color: var(--gray-light); font-size: 14px; padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .remote-features li::before { content: '✓'; color: var(--amber); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* ---- SECTORS ---- */
+  #sectors { background: var(--offwhite); }
+  .sectors-grid {
+    display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px;
+  }
+  .sector-pill {
+    background: var(--white); border: 1.5px solid var(--gray-light);
+    padding: 10px 22px; border-radius: 3px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--navy);
+    transition: all 0.2s; cursor: default;
+  }
+  .sector-pill:hover { background: var(--navy); color: var(--amber); border-color: var(--navy); }
+
+  /* ---- CONTACT ---- */
+  #contact { background: var(--offwhite); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .contact-form-wrap {
+    background: var(--white); border-radius: 8px; padding: 40px;
+    border: 1px solid var(--gray-light); box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .form-group { margin-bottom: 20px; }
+  label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--navy); margin-bottom: 7px; }
+  input, textarea, select {
+    width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-light);
+    border-radius: 4px; font-family: 'Karla', sans-serif; font-size: 14px;
+    color: var(--text-body); background: var(--offwhite);
+    transition: border-color 0.2s; outline: none;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--amber); background: var(--white); }
+  textarea { resize: vertical; min-height: 120px; }
+  .contact-info { padding-top: 8px; }
+  .contact-info h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px; font-weight: 700; text-transform: uppercase;
+    color: var(--navy); margin-bottom: 12px;
+  }
+  .contact-info p { font-family: 'Lora', serif; font-size: 16px; line-height: 1.7; color: #4a6080; margin-bottom: 36px; }
+  .contact-items { display: flex; flex-direction: column; gap: 20px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 14px; }
+  .contact-item-icon {
+    width: 44px; height: 44px; border-radius: 4px;
+    background: var(--navy); display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .contact-item-text strong { display: block; font-size: 12px; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 3px; }
+  .contact-item-text p { font-size: 15px; color: var(--navy); font-weight: 600; }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: var(--navy); padding: 40px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 2px solid var(--amber);
+  }
+  .footer-left {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; color: var(--white); text-transform: uppercase;
+  }
+  .footer-left span { color: var(--amber); }
+  footer p { color: var(--gray); font-size: 13px; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: var(--gray); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--amber); }
+
+  /* ---- ANIMATIONS ---- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-tag { animation: fadeUp 0.5s ease both; }
+  h1 { animation: fadeUp 0.5s 0.1s ease both; }
+  .hero-sub { animation: fadeUp 0.5s 0.2s ease both; }
+  .hero-actions { animation: fadeUp 0.5s 0.3s ease both; }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    #hero { padding: 100px 24px 64px; }
+    #remote, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="data:image/png;base64,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" alt="Aegis Safety Consultancy"/>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#remote">Remote Support</a></li>
+    <li><a href="#sectors">Industries</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Perth, Western Australia</div>
+    <h1>Practical Safety.<br/><em>Without the</em><br/>Overhead.</h1>
+    <p class="hero-sub">
+      Expert WHS consulting for construction, mining, and trades businesses — without the cost of a full-time hire. Simple, no-nonsense safety support when and where you need it.
+    </p>
+    <div class="hero-actions">
+      <a href="#remote" class="btn-primary">See Remote Support</a>
+      <a href="#contact" class="btn-outline">Talk to Matt</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag">What We Do</div>
+  <h2>Safety Services<br/>That Actually Get Used</h2>
+  <p class="lead">No overcomplicated processes. Workers follow the path of least resistance — safety processes need to be clear and simple, and the rest will follow.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <div class="service-title">Risk Assessments</div>
+      <div class="service-desc">Thorough, site-specific risk assessments that identify real hazards and set clear, actionable controls.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <div class="service-title">Safe Work Method Statements</div>
+      <div class="service-desc">SWMS written in plain language — compliant, practical, and actually understood by the workers using them.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏗️</div>
+      <div class="service-title">Safety Management Systems</div>
+      <div class="service-desc">Build or overhaul your SMS from the ground up. Systems that work in the real world, not just on paper.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📁</div>
+      <div class="service-title">Safety Documentation</div>
+      <div class="service-desc">Policies, procedures, plans, templates — professionally written documentation tailored to your business.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔎</div>
+      <div class="service-title">Incident Investigations</div>
+      <div class="service-desc">Structured incident investigations that find root causes, not just blame — and prevent recurrence.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✅</div>
+      <div class="service-title">Audits & Compliance</div>
+      <div class="service-desc">WHS legislation compliance audits with clear findings and prioritised corrective action plans.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <div class="service-title">Safety Data Analysis</div>
+      <div class="service-desc">Turn your incident data and leading indicators into insights that actually drive performance improvement.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌐</div>
+      <div class="service-title">Remote Safety Support</div>
+      <div class="service-desc">Full HSE support delivered remotely — phone, email, and documentation — without the full-time wage.</div>
+    </div>
+  </div>
+</section>
+
+<!-- REMOTE SUPPORT -->
+<section id="remote">
+  <div>
+    <div class="section-tag">Our Flagship Offer</div>
+    <h2>HSE Support.<br/><em>No Full-Time</em><br/>Hire Required.</h2>
+    <p class="lead">Smaller businesses shouldn't have to choose between proper safety support and staying profitable. Our remote support plan gives you a dedicated safety consultant in your corner — for less than a day's wages.</p>
+    <p style="color:var(--gray); font-size:14px; line-height:1.7;">Available 24/7 by phone and email. We respond when you need us — not during office hours. Whether it's a quick compliance question, a critical incident, or a tight deadline on documentation, we're there.</p>
+  </div>
+  <div>
+    <div class="remote-card">
+      <ul class="remote-features">
+        <li>24/7 phone and email access to your consultant</li>
+        <li>Unlimited safety questions and compliance guidance</li>
+        <li>WHS legislation advice specific to WA</li>
+        <li>Priority response for incidents and urgent matters</li>
+        <li>Monthly check-in call</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="width:100%; text-align:center; display:block;">Start Remote Support →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section id="sectors">
+  <div class="section-tag">Industries We Serve</div>
+  <h2>Built for<br/>Blue-Collar Business</h2>
+  <p class="lead">We work across the high-hazard industries that keep Western Australia running. If your people work with their hands, we know your risks.</p>
+  <div class="sectors-grid">
+    <div class="sector-pill">⚒️ Construction</div>
+    <div class="sector-pill">⛏️ Mining</div>
+    <div class="sector-pill">🏭 Manufacturing</div>
+    <div class="sector-pill">🔧 Workshops</div>
+    <div class="sector-pill">🏗️ Refineries</div>
+    <div class="sector-pill">🪖 Defence</div>
+    <div class="sector-pill">🔩 Trades</div>
+    <div class="sector-pill">⚙️ Heavy Industry</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag">Get in Touch</div>
+  <h2>Let's Talk Safety</h2>
+  <div class="contact-grid" style="margin-top:48px;">
+    <div class="contact-form-wrap">
+      <div style="margin-bottom:24px;">
+        <p style="font-family:'Lora',serif; color:#4a6080; line-height:1.7;">Tell us about your business and what you need. We'll get back to you as soon as possible.</p>
+      </div>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="e.g. John Smith"/>
+      </div>
+      <div class="form-group">
+        <label>Business Name</label>
+        <input type="text" placeholder="e.g. Smith Civil Pty Ltd"/>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="04XX XXX XXX"/>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@yourbusiness.com.au"/>
+      </div>
+      <div class="form-group">
+        <label>What Do You Need?</label>
+        <select>
+          <option value="">— Select a service —</option>
+          <option>Remote Support</option>
+          <option>Risk Assessment</option>
+          <option>SWMS Writing</option>
+          <option>Safety Management System</option>
+          <option>Incident Investigation</option>
+          <option>Audit & Compliance</option>
+          <option>Project / Lump Sum Quote</option>
+          <option>Something Else</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell Us More</label>
+        <textarea placeholder="A bit about your business, your industry, and what you're trying to sort out..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%; border:none; cursor:pointer; font-family:'Karla',sans-serif; font-size:15px;">Send Enquiry →</button>
+    </div>
+    <div class="contact-info">
+      <h3>Ready When<br/>You Need Us</h3>
+      <p>Whether you're dealing with an urgent compliance issue, building out your safety system from scratch, or just want to know what support might look like — reach out and we'll have a straight conversation about what you need.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <strong>Phone</strong>
+            <p>Available 24/7 for support clients</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📧</div>
+          <div class="contact-item-text">
+            <strong>Email</strong>
+            <p>Matt.Wallace@Aegissafetyconsultancy.com.au</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <strong>Location</strong>
+            <p>Perth, Western Australia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-left">Aegis <span>Safety Consultancy</span></div>
+    <p style="margin-top:6px;">Perth, Western Australia · ABN: [Your ABN]</p>
+  </div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#remote">Remote Support</a>
+    <a href="#sectors">Industries</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <p>© 2025 Aegis Safety Consultancy. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
