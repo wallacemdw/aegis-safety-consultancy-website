@@ -409,45 +409,48 @@
   <h2>Let's Talk Safety</h2>
   <div class="contact-grid" style="margin-top:48px;">
     <div class="contact-form-wrap">
-      <div style="margin-bottom:24px;">
-        <p style="font-family:'Lora',serif; color:#4a6080; line-height:1.7;">Tell us about your business and what you need. We'll get back to you as soon as possible.</p>
-      </div>
-      <div class="form-group">
-        <label>Your Name</label>
-        <input type="text" placeholder="e.g. John Smith"/>
-      </div>
-      <div class="form-group">
-        <label>Business Name</label>
-        <input type="text" placeholder="e.g. Smith Civil Pty Ltd"/>
-      </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" placeholder="04XX XXX XXX"/>
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="you@yourbusiness.com.au"/>
-      </div>
-      <div class="form-group">
-        <label>What Do You Need?</label>
-        <select>
-          <option value="">— Select a service —</option>
-          <option>Remote Support</option>
-          <option>Risk Assessment</option>
-          <option>SWMS Writing</option>
-          <option>Safety Management System</option>
-          <option>Incident Investigation</option>
-          <option>Audit & Compliance</option>
-          <option>Project / Lump Sum Quote</option>
-          <option>Something Else</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Tell Us More</label>
-        <textarea placeholder="A bit about your business, your industry, and what you're trying to sort out..."></textarea>
-      </div>
-      <button class="btn-primary" style="width:100%; border:none; cursor:pointer; font-family:'Karla',sans-serif; font-size:15px;">Send Enquiry →</button>
-    </div>
+            <form name="contact" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="contact">
+              <div>
+                <p>Tell us about your business and what you need. We'll get back to you as soon as possible.</p>
+              </div>
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g. John Smith">
+              </div>
+              <div class="form-group">
+                <label for="business">Business Name</label>
+                <input type="text" id="business" name="business" placeholder="e.g. Smith Civil Pty Ltd">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@yourbusiness.com.au">
+              </div>
+              <div class="form-group">
+                <label for="service">What Do You Need?</label>
+                <select id="service" name="service">
+                  <option value="">— Select a service —</option>
+                  <option value="Remote Support">Remote Support</option>
+                  <option value="Risk Assessment">Risk Assessment</option>
+                  <option value="SWMS Writing">SWMS Writing</option>
+                  <option value="Safety Management System">Safety Management System</option>
+                  <option value="Incident Investigation">Incident Investigation</option>
+                  <option value="Audit &amp; Compliance">Audit &amp; Compliance</option>
+                  <option value="Project / Lump Sum Quote">Project / Lump Sum Quote</option>
+                  <option value="Something Else">Something Else</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Tell Us More</label>
+                <textarea id="message" name="message" placeholder="A bit about your business, your industry, and what you're trying to sort out..."></textarea>
+              </div>
+              <button type="submit" class="btn-primary">Send Enquiry &#8594;</button>
+            </form>
+          </div>
     <div class="contact-info">
       <h3>Ready When<br/>You Need Us</h3>
       <p>Whether you're dealing with an urgent compliance issue, building out your safety system from scratch, or just want to know what support might look like — reach out and we'll have a straight conversation about what you need.</p>
